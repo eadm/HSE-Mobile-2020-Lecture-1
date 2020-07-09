@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
-import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_view_model.*
 import ru.nobird.android.myapplication.R
 import ru.nobird.android.myapplication.viewmodel.adapter.ItemAdapterDelegate
@@ -24,7 +23,6 @@ class ViewModelActivity : AppCompatActivity() {
         adapter += ItemAdapterDelegate()
 
         recycler.adapter = adapter
-        recycler.layoutManager = LinearLayoutManager(this)
 
         viewModel.state.observe(this) { state ->
             adapter.items = state.items
