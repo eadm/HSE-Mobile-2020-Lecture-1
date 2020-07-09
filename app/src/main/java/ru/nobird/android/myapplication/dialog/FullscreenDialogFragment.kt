@@ -40,6 +40,7 @@ class FullscreenDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toolbar.setNavigationIcon(R.drawable.ic_close)
         toolbar.setNavigationOnClickListener { dismiss() }
         toolbar.inflateMenu(R.menu.menu_fullscreen_dialog)
         toolbar.setOnMenuItemClickListener { item ->
@@ -47,6 +48,7 @@ class FullscreenDialogFragment : DialogFragment() {
                 R.id.review_submit -> {
                     getTarget<Callback>()
                         ?.onReviewCreated(reviewEditText.text.toString(), reviewRating.rating.toInt())
+                    dismiss()
                     true
                 }
 
