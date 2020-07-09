@@ -2,6 +2,9 @@
     <string name="app_name">My Application</string>
     <string name="increment" translatable="false">+%d</string>
     <string name="change_increment_rate">Change increment rate</string>
+    <string name="first_fragment_text">First fragment</string>
+    <string name="second_fragment_text">Second fragment</string>
+    <string name="dynamically_added_text">Dynamically added!</string>
 
     <string name="allow_mobile_download_title">Allow mobile downloading</string>
     <string name="allow_mobile_message">Allow your device to download videos over your mobile

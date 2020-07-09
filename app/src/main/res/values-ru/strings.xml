@@ -2,6 +2,9 @@
 <resources>
     <string name="app_name">Моё Приложение</string>
     <string name="change_increment_rate">Изменить увеличение счетчика</string>
+    <string name="first_fragment_text">Первый фрагмент</string>
+    <string name="second_fragment_text">Второй фрагмент</string>
+    <string name="dynamically_added_text">Добавлено динамически!</string>
 
     <string name="allow_mobile_download_title">Разрешить загрузку через мобильный интернет</string>
     <string name="allow_mobile_message">Разрешить телефону загружать видео по мобильному интернету,
