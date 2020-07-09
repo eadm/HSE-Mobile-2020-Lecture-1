@@ -6,6 +6,7 @@
     <string name="second_fragment_text">Second fragment</string>
     <string name="dynamically_added_text">Dynamically added!</string>
     <string name="replace_button_text">Replace</string>
+    <string name="name_and_age" translatable="false">%s - %d</string>
 
     <string name="allow_mobile_download_title">Allow mobile downloading</string>
     <string name="allow_mobile_message">Allow your device to download videos over your mobile
