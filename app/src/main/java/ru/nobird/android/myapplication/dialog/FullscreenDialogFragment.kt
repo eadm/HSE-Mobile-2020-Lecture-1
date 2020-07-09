@@ -58,19 +58,6 @@ class FullscreenDialogFragment : DialogFragment() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog
-            ?.window
-            ?.let { window ->
-                window.setLayout(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-                window.setWindowAnimations(R.style.ThemeOverlay_AppTheme_Dialog_Fullscreen)
-            }
-    }
-
     interface Callback {
         fun onReviewCreated(text: String, rate: Int)
     }
