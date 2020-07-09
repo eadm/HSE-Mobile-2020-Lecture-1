@@ -28,4 +28,9 @@
     <string name="topic_dialogfragment" translatable="false">DialogFragment</string>
     <string name="topic_viewmodel" translatable="false">ViewModel</string>
     <string name="topic_lifecycle" translatable="false">Lifecycle</string>
+
+    <string name="topic_dynamic" translatable="false">Dynamic</string>
+    <string name="topic_multiple" translatable="false">Multiple</string>
+    <string name="topic_arguments" translatable="false">Arguments</string>
+    <string name="topic_navigation" translatable="false">Navigation</string>
 </resources>

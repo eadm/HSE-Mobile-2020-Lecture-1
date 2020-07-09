@@ -20,6 +20,10 @@
         <activity android:name=".viewmodel.ViewModelActivity" />
         <activity android:name=".lifecycle.LifecycleExample" />
         <activity android:name=".FragmentsActivity" />
+        <activity android:name=".fragment.arguments.ArgumentsActivity" />
+        <activity android:name=".fragment.dynamic.FragmentDynamicActivity" />
+        <activity android:name=".fragment.multiple.MultipleFragmentsActivity" />
+        <activity android:name=".fragment.navigation.NavigationActivity" />
     </application>
 
 </manifest>

@@ -7,31 +7,31 @@
     android:gravity="center">
 
     <Button
-        android:id="@+id/fragmentTopic"
+        android:id="@+id/dynamicTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/topic_fragment"
+        android:text="@string/topic_dynamic"
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/dialogFragmentTopic"
+        android:id="@+id/multipleTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/topic_dialogfragment"
+        android:text="@string/topic_multiple"
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/viewModelTopic"
+        android:id="@+id/argumentsTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/topic_viewmodel"
+        android:text="@string/topic_arguments"
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/lifecycleTopic"
+        android:id="@+id/navigationTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/topic_lifecycle"
+        android:text="@string/topic_navigation"
         android:textAllCaps="false" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
