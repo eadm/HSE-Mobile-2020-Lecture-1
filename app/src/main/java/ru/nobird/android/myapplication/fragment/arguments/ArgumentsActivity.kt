@@ -9,9 +9,11 @@ class ArgumentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_container)
-        supportFragmentManager.commitNow {
-            val person = Person("Clark", "Kent", 32)
-            add(R.id.container, ArgumentsFragment.newInstance(person), ArgumentsFragment.TAG)
+        if (savedInstanceState == null) {
+            supportFragmentManager.commitNow {
+                val person = Person("Clark", "Kent", 32)
+                add(R.id.container, ArgumentsFragment.newInstance(person), ArgumentsFragment.TAG)
+            }
         }
     }
 }

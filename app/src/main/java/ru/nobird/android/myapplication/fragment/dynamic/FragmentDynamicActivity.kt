@@ -11,15 +11,17 @@ class FragmentDynamicActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_dynamic)
 
-        supportFragmentManager.commitNow {
-            // Динамическое добавление
+        if (savedInstanceState == null) {
+            supportFragmentManager.commitNow {
+                // Динамическое добавление
 
-            val fragmentOne = DynamicFragmentOne()
-            add(R.id.container, fragmentOne, DynamicFragmentOne.TAG)
+                val fragmentOne = DynamicFragmentOne()
+                add(R.id.container, fragmentOne, DynamicFragmentOne.TAG)
 
 //            val fragmentTwo = DynamicFragmentTwo()
 //            add(R.id.container, fragmentTwo, DynamicFragmentTwo.TAG)
 //            replaceButton.isVisible = true
+            }
         }
 
         // Замена фрагмента
