@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import androidx.fragment.app.DialogFragment
+import kotlinx.android.synthetic.main.dialog_fullscreen.*
 import ru.nobird.android.myapplication.R
+import ru.nobird.android.myapplication.extension.getTarget
 
 class FullscreenDialogFragment : DialogFragment() {
     companion object {
@@ -38,20 +40,25 @@ class FullscreenDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toolbar.setNavigationIcon(R.drawable.ic_close)
+        toolbar.setNavigationOnClickListener { dismiss() }
+        toolbar.inflateMenu(R.menu.menu_fullscreen_dialog)
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.review_submit -> {
+                    getTarget<Callback>()
+                        ?.onReviewCreated(reviewEditText.text.toString(), reviewRating.rating.toInt())
+                    dismiss()
+                    true
+                }
 
-
+                else ->
+                    false
+            }
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
-        dialog
-            ?.window
-            ?.let { window ->
-                window.setLayout(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-                window.setWindowAnimations(R.style.ThemeOverlay_AppTheme_Dialog_Fullscreen)
-            }
+    interface Callback {
+        fun onReviewCreated(text: String, rate: Int)
     }
 }

@@ -7,7 +7,11 @@ import ru.nobird.android.myapplication.dialog.AlertDialogFragment
 import ru.nobird.android.myapplication.dialog.FullscreenDialogFragment
 import ru.nobird.android.view.base.ui.extension.snackbar
 
-class DialogsActivity : FragmentActivity(), AlertDialogFragment.Callback {
+class DialogsActivity :
+    FragmentActivity(),
+    AlertDialogFragment.Callback,
+    FullscreenDialogFragment.Callback {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dialogs)
@@ -27,5 +31,9 @@ class DialogsActivity : FragmentActivity(), AlertDialogFragment.Callback {
 
     override fun onMobileDataStateChanged(isMobileAllowed: Boolean) {
         root.snackbar(message = isMobileAllowed.toString())
+    }
+
+    override fun onReviewCreated(text: String, rate: Int) {
+        root.snackbar(message = text)
     }
 }

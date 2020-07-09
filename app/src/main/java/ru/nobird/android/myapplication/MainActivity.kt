@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button2.setOnClickListener {
-            startActivityForResult(Intent(this, SecondActivity::class.java), REQUEST_CODE)
+            startActivityForResult(Intent(this, DialogsActivity::class.java), REQUEST_CODE)
         }
     }
 

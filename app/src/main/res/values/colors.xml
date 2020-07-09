@@ -1,10 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- AppTheme -->
+    <color name="color_primary">@color/color_brown_700</color>
+    <color name="color_primary_variant">@color/color_brown_700</color>
 
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorDivider">#12000000</color>
+    <color name="color_secondary">@color/color_violet_300</color>
+    <color name="color_secondary_alpha_12">@color/color_violet_300_alpha_12</color>
+
+    <color name="color_secondary_variant">@color/color_violet_300</color>
+
+    <color name="color_background">@color/white</color>
+    <color name="color_surface">@color/white</color>
+    <color name="color_error">@color/color_red_500</color>
+    <color name="color_error_alpha_12">@color/color_red_500_alpha_12</color>
+
+    <color name="color_on_primary">@color/white</color>
+    <color name="color_on_secondary">@color/white</color>
+    <color name="color_on_background">@color/black</color>
+
+    <color name="color_on_surface">@color/black</color>
+    <color name="color_on_surface_alpha_12">#30000000</color>
+    <color name="color_on_surface_emphasis_medium">#99000000</color>
+    <color name="color_elevation_overlay_1dp">#12000000</color>
+    <color name="color_elevation_overlay_2dp">#17000000</color>
+
+    <color name="color_on_error">@color/white</color>
+
+    <color name="color_status_bar">@color/color_primary</color>
+
+    <color name="color_control_normal">@color/color_on_surface_emphasis_medium</color> <!-- Non selector color for SKD < 23 -->
+    <color name="color_divider">@color/color_elevation_overlay_2dp</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="black">@android:color/black</color>
+
+    <color name="white">#FFFFFF</color>
+
+
+    <!-- Color palette -->
+    <color name="color_brown_700">#535366</color>
+    <color name="color_brown_400">#AFAEC4</color>
+    <color name="color_brown_300">#D3D2E9</color>
+
+    <color name="color_violet_300">#6C7BDF</color>
+    <color name="color_violet_300_alpha_12">#306C7BDF</color>
+    <color name="color_violet_200">#98A0E8</color>
+    <color name="color_violet_200_alpha_12">#3098A0E8</color>
+
+    <color name="color_green_400">#66CC66</color>
+    <color name="color_green_400_alpha_12">#3066CC66</color>
+    <color name="color_green_300">#83D683</color>
+    <color name="color_green_300_alpha_12">#3083D683</color>
+    <color name="color_green_200">#A8E1A7</color>
+    <color name="color_green_200_alpha_12">#30A8E1A7</color>
+
+    <color name="color_red_500">#FF3329</color>
+    <color name="color_red_500_alpha_12">#30FF3329</color>
+    <color name="color_red_300">#FF7965</color>
+    <color name="color_red_300_alpha_12">#30FF7965</color>
+
+    <color name="color_yellow_800">#FFA961</color>
+    <color name="color_yellow_800_alpha_12">#1FFFA961</color>
+    <color name="color_yellow_300">#FFE284</color>
+    <color name="color_yellow_300_alpha_12">#1FFFE284</color>
 
 </resources>
