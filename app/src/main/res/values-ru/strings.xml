@@ -2,4 +2,16 @@
 <resources>
     <string name="app_name">Моё Приложение</string>
     <string name="change_increment_rate">Изменить увеличение счетчика</string>
+
+    <string name="allow_mobile_download_title">Разрешить загрузку через мобильный интернет</string>
+    <string name="allow_mobile_message">Разрешить телефону загружать видео по мобильному интернету,
+        когда Wi-Fi недоступен?
+    </string>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+
+    <string name="review_hint">Ващ отзыв</string>
+    <string name="alert_dialog">Alert dialog</string>
+    <string name="fullscreen_dialog">Fullscreen Dialog</string>
 </resources>
