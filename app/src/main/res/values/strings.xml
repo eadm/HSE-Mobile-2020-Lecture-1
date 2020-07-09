@@ -23,4 +23,9 @@
     <string name="review_action_create">Create</string>
     <string name="add_item">Add item</string>
     <string name="clear_item">Clear</string>
+
+    <string name="topic_fragment" translatable="false">Fragment</string>
+    <string name="topic_dialogfragment" translatable="false">DialogFragment</string>
+    <string name="viewmodel" translatable="false">ViewModel</string>
+    <string name="lifecycle" translatable="false">Lifecycle</string>
 </resources>

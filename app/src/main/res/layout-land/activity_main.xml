@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/fragmentTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/button"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/topic_fragment"
+        android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/dialogFragmentTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:textSize="@dimen/text_size"
-        android:text="@string/increment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button2"
-        app:layout_constraintStart_toEndOf="@id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/topic_dialogfragment"
+        android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/viewModelTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/viewmodel"
+        android:textAllCaps="false" />
 
-        android:textSize="@dimen/text_size"
-        android:text="@string/change_increment_rate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/button"
-        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/lifecycleTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lifecycle"
+        android:textAllCaps="false" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
