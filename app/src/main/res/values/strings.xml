@@ -19,4 +19,6 @@
     <string name="fullscreen_dialog">Fullscreen Dialog</string>
     <string name="review_title">Review</string>
     <string name="review_action_create">Create</string>
+    <string name="add_item">Add item</string>
+    <string name="clear_item">Clear</string>
 </resources>
