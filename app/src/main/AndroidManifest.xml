@@ -19,6 +19,7 @@
         <activity android:name=".DialogsActivity" />
         <activity android:name=".viewmodel.ViewModelActivity" />
         <activity android:name=".lifecycle.LifecycleExample" />
+        <activity android:name=".FragmentsActivity" />
     </application>
 
 </manifest>
