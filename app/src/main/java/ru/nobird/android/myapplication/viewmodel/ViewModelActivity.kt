@@ -1,6 +1,7 @@
 package ru.nobird.android.myapplication.viewmodel
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
@@ -16,6 +17,11 @@ class ViewModelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_model)
 
+        supportActionBar?.apply {
+            title = getString(R.string.topic_viewmodel)
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         addItem.setOnClickListener { viewModel.onAddItemClicked() }
         clear.setOnClickListener { viewModel.onClearItemsClicked() }
 
@@ -28,4 +34,12 @@ class ViewModelActivity : AppCompatActivity() {
             adapter.items = state.items
         }
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+            true
+        } else {
+            super.onOptionsItemSelected(item)
+        }
 }
