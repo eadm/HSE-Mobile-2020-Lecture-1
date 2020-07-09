@@ -17,7 +17,10 @@ class NavigationActivity : AppCompatActivity() {
             setFragment(it.itemId)
             true
         }
-        setFragment(R.id.one)
+
+        if (savedInstanceState == null) {
+            setFragment(R.id.one)
+        }
     }
 
     private fun getNextFragmentTag(@IdRes menuId: Int): String =
