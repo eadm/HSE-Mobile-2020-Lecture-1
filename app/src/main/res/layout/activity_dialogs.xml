@@ -11,12 +11,14 @@
         android:id="@+id/alertDialogButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="@string/alert_dialog" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/fullScreenDialogButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:text="@string/fullscreen_dialog" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

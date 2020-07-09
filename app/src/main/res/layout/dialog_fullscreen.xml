@@ -28,7 +28,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorDivider" />
+                android:background="@color/color_divider" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/reviewEditText"
@@ -49,7 +49,8 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" />
+            android:layout_height="?attr/actionBarSize"
+            app:title="@string/review_title" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

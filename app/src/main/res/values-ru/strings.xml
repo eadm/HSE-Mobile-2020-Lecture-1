@@ -12,6 +12,9 @@
     <string name="no">Нет</string>
 
     <string name="review_hint">Ващ отзыв</string>
+    <string name="review_title">Отзыв</string>
+
     <string name="alert_dialog">Alert dialog</string>
     <string name="fullscreen_dialog">Fullscreen Dialog</string>
+    <string name="review_action_create">Создать</string>
 </resources>
