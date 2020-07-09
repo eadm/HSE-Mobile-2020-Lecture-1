@@ -1,4 +1,4 @@
-package ru.nobird.android.myapplication.fragment.basic.navigation
+package ru.nobird.android.myapplication.fragment.dynamic
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_dynamic.*
-import kotlinx.android.synthetic.main.fragment_navigation.*
 import ru.nobird.android.myapplication.R
 
-class NavigationOneFragment : Fragment() {
+class DynamicFragmentOne : Fragment() {
     companion object {
-        const val TAG = "NavigationOneFragment"
+        const val TAG = "DynamicFragmentOne"
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-        inflater.inflate(R.layout.fragment_navigation, container, false)
+        inflater.inflate(R.layout.fragment_dynamic, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigationText.text = 1.toString()
+        dynamicText.text = TAG
     }
 }

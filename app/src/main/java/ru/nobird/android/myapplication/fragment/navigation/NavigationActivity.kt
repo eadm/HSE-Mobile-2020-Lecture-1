@@ -1,4 +1,4 @@
-package ru.nobird.android.myapplication.fragment.basic.navigation
+package ru.nobird.android.myapplication.fragment.navigation
 
 import android.os.Bundle
 import androidx.annotation.IdRes

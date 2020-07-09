@@ -1,4 +1,4 @@
-package ru.nobird.android.myapplication.fragment.basic.navigation
+package ru.nobird.android.myapplication.fragment.navigation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_navigation.*
 import ru.nobird.android.myapplication.R
 
-class NavigationTwoFragment : Fragment() {
+class NavigationThreeFragment : Fragment() {
     companion object {
-        const val TAG = "NavigationTwoFragment"
+        const val TAG = "NavigationThreeFragment"
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
@@ -18,6 +18,6 @@ class NavigationTwoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigationText.text = 2.toString()
+        navigationText.text = 3.toString()
     }
 }
