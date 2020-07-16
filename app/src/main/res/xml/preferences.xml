@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:key="root">
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="switch"
+        android:summary="Switch summary"
+        android:title="Switch title" />
+
+    <DropDownPreference
+        android:defaultValue="Mustard"
+        android:entries="@array/sauce"
+        android:entryValues="@array/sauce"
+        android:key="dropdown"
+        android:title="Dropdown title"
+        app:useSimpleSummaryProvider="true" />
+
+    <SeekBarPreference
+        android:defaultValue="5"
+        android:key="seekbar"
+        android:max="10"
+        android:title="Seek bar title" />
+
+    <EditTextPreference
+        android:defaultValue=""
+        android:dialogTitle="This is a title"
+        android:key="edittext"
+        android:title="Edit text title"
+        app:useSimpleSummaryProvider="true" />
+
+    <PreferenceCategory
+        android:key="listsCategory"
+        android:title="Lists">
+
+        <ListPreference
+            android:defaultValue="Mayonnaise"
+            android:entries="@array/sauce"
+            android:entryValues="@array/sauce"
+            android:key="list"
+            android:title="List title"
+            app:useSimpleSummaryProvider="true" />
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/empty_array"
+            android:entries="@array/sauce"
+            android:entryValues="@array/sauce"
+            android:key="multilist"
+            android:summary="Multi list summary"
+            android:title="Multi list tile" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="expandableCategory"
+        android:title="Expandable"
+        app:initialExpandedChildrenCount="1">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="switchOne"
+            android:summary="Switch One summary"
+            android:title="Switch One title" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="switchTwo"
+            android:summary="Switch Two summary"
+            android:title="Switch Two title" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="switchThree"
+            android:summary="Switch Three summary"
+            android:title="Switch Three title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

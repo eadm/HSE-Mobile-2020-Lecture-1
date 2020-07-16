@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sauce">
+        <item>Ketchup</item>
+        <item>Mustard</item>
+        <item>Mayonnaise</item>
+    </array>
+
+    <array name="empty_array"/>
+</resources>
