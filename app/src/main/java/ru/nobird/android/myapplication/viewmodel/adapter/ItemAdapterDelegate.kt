@@ -22,7 +22,7 @@ class ItemAdapterDelegate : AdapterDelegate<Item, DelegateViewHolder<Item>>() {
         LayoutContainer {
 
         override fun onBind(data: Item) {
-            text.text = data.toString()
+            text.text = data.name
         }
     }
 }

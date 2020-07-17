@@ -19,14 +19,14 @@
         android:id="@+id/addItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_item"
+        android:text="@string/movie_create"
         android:layout_margin="8dp" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/clear_item"
+        android:text="@string/movie_delete"
         android:layout_margin="8dp" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

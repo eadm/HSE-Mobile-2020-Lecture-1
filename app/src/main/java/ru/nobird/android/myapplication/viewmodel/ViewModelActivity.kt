@@ -9,8 +9,9 @@ import kotlinx.android.synthetic.main.activity_view_model.*
 import ru.nobird.android.myapplication.R
 import ru.nobird.android.myapplication.viewmodel.adapter.ItemAdapterDelegate
 import ru.nobird.android.ui.adapters.DefaultDelegateAdapter
+import ru.nobird.android.view.base.ui.extension.showIfNotExists
 
-class ViewModelActivity : AppCompatActivity() {
+class ViewModelActivity : AppCompatActivity(), CreateMovieDialogFragment.Callback {
     private val viewModel: SampleViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +19,15 @@ class ViewModelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_model)
 
         supportActionBar?.apply {
-            title = getString(R.string.topic_viewmodel)
+            title = getString(R.string.topic_network)
             setDisplayHomeAsUpEnabled(true)
         }
 
-        addItem.setOnClickListener { viewModel.onAddItemClicked() }
+        addItem.setOnClickListener {
+            CreateMovieDialogFragment
+                .newInstance()
+                .showIfNotExists(supportFragmentManager, CreateMovieDialogFragment.TAG)
+        }
         clear.setOnClickListener { viewModel.onClearItemsClicked() }
 
         val adapter = DefaultDelegateAdapter<Item>()
@@ -42,4 +47,8 @@ class ViewModelActivity : AppCompatActivity() {
         } else {
             super.onOptionsItemSelected(item)
         }
+
+    override fun onCreateMovie(name: String) {
+        viewModel.onCreateMovie(name)
+    }
 }
