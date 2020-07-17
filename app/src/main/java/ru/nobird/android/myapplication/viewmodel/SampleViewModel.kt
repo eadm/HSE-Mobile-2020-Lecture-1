@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.nobird.android.myapplication.data.NetworkManager
+import java.lang.Exception
 import java.util.concurrent.Executors
 
 class SampleViewModel : ViewModel() {
@@ -13,25 +14,34 @@ class SampleViewModel : ViewModel() {
     val state: LiveData<State>
         get() = _state
 
-
     init {
-        _state.value = State(emptyList())
+        _state.value = State.Idle
         fetchItems()
     }
 
     fun onCreateMovie(name: String) {
         val oldState = _state.value ?: return
+        executor.execute {
+
+        }
 //        _state.value = oldState.copy(items = oldState.items + Item(oldState.items.size))
     }
 
     fun onClearItemsClicked() {
-        _state.value = State(emptyList())
+        _state.value = State.Data(emptyList())
     }
 
-    private fun fetchItems() {
+    fun fetchItems() {
+        _state.value = State.Loading
         executor.execute {
-            val items = NetworkManager.getItems()
-            _state.postValue(State(items))
+            val state =
+                try {
+                    Thread.sleep(3000)
+                    State.Data(NetworkManager.getItems())
+                } catch (_: Exception) {
+                    State.Error
+                }
+            _state.postValue(state)
         }
     }
 

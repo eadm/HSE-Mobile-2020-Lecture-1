@@ -38,4 +38,6 @@
     <string name="movie_create_short">Create</string>
     <string name="movie_name">Movie name</string>
     <string name="movie_delete">Delete last movie</string>
+    <string name="network_error">Network error</string>
+    <string name="error_action">Retry</string>
 </resources>

@@ -28,4 +28,6 @@
     <string name="movie_create_short">Создать</string>
     <string name="movie_name">Имя фильма</string>
     <string name="movie_delete">Удалить последний фильм</string>
+    <string name="network_error">Ошибка сети</string>
+    <string name="error_action">Попробовать снова</string>
 </resources>
