@@ -11,6 +11,6 @@ object NetworkManager {
     }
 
     fun deleteItem(item: Item) {
-        
+
     }
 }

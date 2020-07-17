@@ -33,4 +33,9 @@
     <string name="topic_multiple" translatable="false">Multiple</string>
     <string name="topic_arguments" translatable="false">Arguments</string>
     <string name="topic_navigation" translatable="false">Navigation</string>
+
+    <string name="movie_create">Create movie</string>
+    <string name="movie_create_short">Create</string>
+    <string name="movie_name">Movie name</string>
+    <string name="movie_delete">Delete last movie</string>
 </resources>

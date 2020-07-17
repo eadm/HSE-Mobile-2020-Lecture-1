@@ -23,4 +23,9 @@
     <string name="review_action_create">Создать</string>
     <string name="add_item">Добавить элемент</string>
     <string name="clear_item">Удалить всё</string>
+
+    <string name="movie_create">Создать фильм</string>
+    <string name="movie_create_short">Создать</string>
+    <string name="movie_name">Имя фильма</string>
+    <string name="movie_delete">Удалить последний фильм</string>
 </resources>

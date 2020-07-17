@@ -13,7 +13,7 @@ class SampleViewModel : ViewModel() {
         _state.value = State(emptyList())
     }
 
-    fun onAddItemClicked() {
+    fun onCreateMovie(name: String) {
         val oldState = _state.value ?: return
 //        _state.value = oldState.copy(items = oldState.items + Item(oldState.items.size))
     }
