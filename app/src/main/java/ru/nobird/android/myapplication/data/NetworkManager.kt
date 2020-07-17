@@ -10,8 +10,13 @@ import retrofit2.create
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.HeaderMap
+import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
+import retrofit2.http.QueryMap
 import ru.nobird.android.myapplication.viewmodel.Item
 import java.util.concurrent.TimeUnit
 
@@ -24,6 +29,26 @@ interface MoviesService {
 
     @DELETE("movies/{id}")
     fun deleteMovie(@Path("id") id: Int): Call<Void>
+
+
+    @Headers(
+        "User-Agent: Retrofit-Sample-App"
+    )
+    @GET("movies/{id}")
+    fun getMovie(
+        @Path("id") id: Int,
+
+        @Query("name") name: String,
+        @QueryMap queryMap: Map<String, String>,
+
+        @HeaderMap headersMap: Map<String, String>
+    ): Call<Item>
+
+    @PUT("movies/{id}")
+    fun updateMovie(
+        @Path("id") id: Int,
+        @Body item: Item
+    ): Call<Item>
 }
 
 object NetworkManager {
