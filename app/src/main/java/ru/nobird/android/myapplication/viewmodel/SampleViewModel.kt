@@ -10,15 +10,24 @@ class SampleViewModel : ViewModel() {
         get() = _state
 
     init {
-        _state.value = State(emptyList())
+        _state.value = State.Idle
+        fetchItems()
     }
 
     fun onCreateMovie(name: String) {
-        val oldState = _state.value ?: return
+//        val oldState = _state.value ?: return
 //        _state.value = oldState.copy(items = oldState.items + Item(oldState.items.size))
     }
 
     fun onClearItemsClicked() {
-        _state.value = State(emptyList())
+        _state.value = State.Data(emptyList())
+    }
+
+    fun fetchItems() {
+        _state.value = State.Loading
+
+    }
+
+    override fun onCleared() {
     }
 }

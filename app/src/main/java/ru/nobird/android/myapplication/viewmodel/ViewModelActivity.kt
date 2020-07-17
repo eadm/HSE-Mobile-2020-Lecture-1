@@ -9,10 +9,13 @@ import kotlinx.android.synthetic.main.activity_view_model.*
 import ru.nobird.android.myapplication.R
 import ru.nobird.android.myapplication.viewmodel.adapter.ItemAdapterDelegate
 import ru.nobird.android.ui.adapters.DefaultDelegateAdapter
+import ru.nobird.android.view.base.ui.delegate.ViewStateDelegate
 import ru.nobird.android.view.base.ui.extension.showIfNotExists
 
 class ViewModelActivity : AppCompatActivity(), CreateMovieDialogFragment.Callback {
     private val viewModel: SampleViewModel by viewModels()
+    private val viewStateDelegate = ViewStateDelegate<State>()
+    private val adapter = DefaultDelegateAdapter<Item>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,20 +26,31 @@ class ViewModelActivity : AppCompatActivity(), CreateMovieDialogFragment.Callbac
             setDisplayHomeAsUpEnabled(true)
         }
 
+        viewStateDelegate.addState<State.Idle>()
+        viewStateDelegate.addState<State.Loading>(progress)
+        viewStateDelegate.addState<State.Data>(recycler, addItem, clear)
+        viewStateDelegate.addState<State.Error>(errorText, errorAction)
+
         addItem.setOnClickListener {
             CreateMovieDialogFragment
                 .newInstance()
                 .showIfNotExists(supportFragmentManager, CreateMovieDialogFragment.TAG)
         }
         clear.setOnClickListener { viewModel.onClearItemsClicked() }
+        errorAction.setOnClickListener { viewModel.fetchItems() }
 
-        val adapter = DefaultDelegateAdapter<Item>()
         adapter += ItemAdapterDelegate()
 
         recycler.adapter = adapter
 
-        viewModel.state.observe(this) { state ->
-            adapter.items = state.items
+        viewModel.state.observe(this, ::setState)
+    }
+
+    private fun setState(state: State) {
+        viewStateDelegate.switchState(state)
+        when (state) {
+            is State.Data ->
+                adapter.items = state.items
         }
     }
 
