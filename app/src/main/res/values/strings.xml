@@ -26,7 +26,7 @@
 
     <string name="topic_fragment" translatable="false">Fragment</string>
     <string name="topic_dialogfragment" translatable="false">DialogFragment</string>
-    <string name="topic_viewmodel" translatable="false">ViewModel</string>
+    <string name="topic_network" translatable="false">Network</string>
     <string name="topic_lifecycle" translatable="false">Lifecycle</string>
 
     <string name="topic_dynamic" translatable="false">Dynamic</string>

@@ -18,7 +18,7 @@ class ViewModelActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_model)
 
         supportActionBar?.apply {
-            title = getString(R.string.topic_viewmodel)
+            title = getString(R.string.topic_network)
             setDisplayHomeAsUpEnabled(true)
         }
 
