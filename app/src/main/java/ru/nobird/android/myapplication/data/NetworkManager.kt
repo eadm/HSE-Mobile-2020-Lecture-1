@@ -72,6 +72,7 @@ object NetworkManager {
             OutputStreamWriter(connection.outputStream).use {
                 it.write(data.toString())
             }
+            connection.responseCode
         } finally {
             connection?.disconnect()
         }

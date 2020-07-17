@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import ru.nobird.android.myapplication.data.NetworkManager
 import java.lang.Exception
 import java.util.concurrent.Executors
+import kotlin.random.Random
 
 class SampleViewModel : ViewModel() {
     private val executor = Executors.newSingleThreadExecutor()
@@ -20,11 +21,17 @@ class SampleViewModel : ViewModel() {
     }
 
     fun onCreateMovie(name: String) {
-        val oldState = _state.value ?: return
         executor.execute {
-
+            val item = Item(id = Random.nextInt(), name = name)
+            val state =
+                try {
+                    NetworkManager.createItem(item)
+                    State.Data(NetworkManager.getItems())
+                } catch (_: Exception) {
+                    State.Error
+                }
+            _state.postValue(state)
         }
-//        _state.value = oldState.copy(items = oldState.items + Item(oldState.items.size))
     }
 
     fun onClearItemsClicked() {
@@ -36,7 +43,7 @@ class SampleViewModel : ViewModel() {
         executor.execute {
             val state =
                 try {
-                    Thread.sleep(3000)
+                    Thread.sleep(2000)
                     State.Data(NetworkManager.getItems())
                 } catch (_: Exception) {
                     State.Error
