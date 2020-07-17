@@ -18,6 +18,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
 import ru.nobird.android.myapplication.viewmodel.Item
+import java.util.Date
 import java.util.concurrent.TimeUnit
 
 interface MoviesService {
@@ -71,6 +72,7 @@ object NetworkManager {
             .build()
 
         val gson = GsonBuilder()
+            .registerTypeAdapter(Date::class.java, UTCDateAdapter()) // можно добавлять адаптеры для кастомных типов
             .create()
 
         val converterFactory = GsonConverterFactory.create(gson)
