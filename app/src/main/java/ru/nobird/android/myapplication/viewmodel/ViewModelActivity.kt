@@ -36,7 +36,7 @@ class ViewModelActivity : AppCompatActivity(), CreateMovieDialogFragment.Callbac
                 .newInstance()
                 .showIfNotExists(supportFragmentManager, CreateMovieDialogFragment.TAG)
         }
-        clear.setOnClickListener { viewModel.onClearItemsClicked() }
+        clear.setOnClickListener { viewModel.onDeleteLastItem() }
         errorAction.setOnClickListener { viewModel.fetchItems() }
 
         adapter += ItemAdapterDelegate()
