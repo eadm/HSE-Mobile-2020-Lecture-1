@@ -7,12 +7,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import ru.nobird.android.myapplication.data.NetworkManager
+import ru.nobird.android.myapplication.data.cache.ApplicationDatabase
+import ru.nobird.android.myapplication.data.cache.PersonDao
 import kotlin.random.Random
 
 class SampleViewModel : ViewModel() {
     private val _state = MutableLiveData<State>()
     val state: LiveData<State>
         get() = _state
+
+    private val personDao: PersonDao = ApplicationDatabase.INSTANCE.personDao()
 
     init {
         _state.value = State.Idle
