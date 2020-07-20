@@ -15,7 +15,7 @@ import ru.nobird.android.view.base.ui.extension.showIfNotExists
 class ViewModelActivity : AppCompatActivity(), CreateMovieDialogFragment.Callback {
     private val viewModel: SampleViewModel by viewModels()
     private val viewStateDelegate = ViewStateDelegate<State>()
-    private val adapter = DefaultDelegateAdapter<Item>()
+    private val adapter = DefaultDelegateAdapter<MovieData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +50,7 @@ class ViewModelActivity : AppCompatActivity(), CreateMovieDialogFragment.Callbac
         viewStateDelegate.switchState(state)
         when (state) {
             is State.Data ->
-                adapter.items = state.items
+                adapter.items = state.movies
         }
     }
 

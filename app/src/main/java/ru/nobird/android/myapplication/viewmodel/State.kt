@@ -5,7 +5,7 @@ sealed class State {
     object Loading : State()
 
     data class Data(
-        val items: List<Item>
+        val movies: List<MovieData>
     ) : State()
 
     object Error : State()

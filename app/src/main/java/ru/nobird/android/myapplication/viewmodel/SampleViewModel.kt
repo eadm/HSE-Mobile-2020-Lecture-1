@@ -3,12 +3,15 @@ package ru.nobird.android.myapplication.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.plusAssign
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.rxkotlin.toObservable
+import io.reactivex.schedulers.Schedulers
+import ru.nobird.android.myapplication.data.CinemasRepository
+import ru.nobird.android.myapplication.data.MoviesRepository
 import ru.nobird.android.myapplication.data.NetworkManager
-import ru.nobird.android.myapplication.data.cache.ApplicationDatabase
-import ru.nobird.android.myapplication.data.cache.PersonDao
 import kotlin.random.Random
 
 class SampleViewModel : ViewModel() {
@@ -16,7 +19,9 @@ class SampleViewModel : ViewModel() {
     val state: LiveData<State>
         get() = _state
 
-    private val personDao: PersonDao = ApplicationDatabase.INSTANCE.personDao()
+    private val compositeDisposable = CompositeDisposable()
+    private val moviesRepository = MoviesRepository()
+    private val cinemasRepository = CinemasRepository()
 
     init {
         _state.value = State.Idle
@@ -24,47 +29,65 @@ class SampleViewModel : ViewModel() {
     }
 
     fun onCreateMovie(name: String) {
-        val item = Item(id = Random.nextInt(), name = name)
-        NetworkManager.createItem(item).enqueue(object : Callback<Item> {
-            override fun onResponse(call: Call<Item>, response: Response<Item>) {
-                fetchItems()
-            }
-
-            override fun onFailure(call: Call<Item>, t: Throwable) {}
-        })
+        val item = Movie(id = Random.nextInt(), name = name, cinemaId = 1)
+        compositeDisposable += NetworkManager
+            .createItem(item)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onSuccess = { fetchItems() },
+                onError = {}
+            )
     }
 
     fun onDeleteLastItem() {
         val lastItem = (state.value as? State.Data)
-            ?.items
+            ?.movies
             ?.lastOrNull()
             ?: return
 
-        NetworkManager.deleteItem(lastItem).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                fetchItems()
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {}
-        })
+        compositeDisposable += NetworkManager
+            .deleteItem(lastItem.movie)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onComplete = { fetchItems() },
+                onError = {}
+            )
     }
 
     fun fetchItems() {
         _state.value = State.Loading
-        NetworkManager.getItems().enqueue(object : Callback<List<Item>> {
-            override fun onResponse(call: Call<List<Item>>, response: Response<List<Item>>) {
-                val state =
-                    if (response.isSuccessful) {
-                    State.Data(response.body() ?: emptyList())
-                } else {
-                    State.Error
-                }
-                _state.postValue(state)
-            }
+        compositeDisposable += moviesRepository
+            .getMovies()
+            .flatMap { movies ->
+                val cinemaIds = movies
+                    .asSequence()
+                    .map { it.cinemaId }
+                    .toSet()
 
-            override fun onFailure(call: Call<List<Item>>, t: Throwable) {
-                _state.postValue(State.Error)
+                cinemaIds
+                    .toObservable()
+                    .flatMapSingle { cinemasRepository.getCinema(it) }
+                    .toList()
+                    .map { cinemas ->
+                        val cinemasMap: Map<Long, Cinema> = cinemas.associateBy { it.id }
+                        movies.map {
+                            MovieData(it, cinemasMap.getValue(it.cinemaId))
+                        }
+                    }
             }
-        })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onSuccess = {
+                    _state.postValue(State.Data(it))
+                },
+                onError = { _state.postValue(State.Error) }
+            )
+    }
+
+    override fun onCleared() {
+        compositeDisposable.clear()
     }
 }

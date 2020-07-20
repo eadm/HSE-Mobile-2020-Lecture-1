@@ -2,9 +2,12 @@ package ru.nobird.android.myapplication.data
 
 import android.util.Log
 import com.google.gson.GsonBuilder
+import io.reactivex.Completable
+import io.reactivex.Single
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import retrofit2.http.Body
@@ -17,20 +20,23 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
-import ru.nobird.android.myapplication.viewmodel.Item
+import ru.nobird.android.myapplication.viewmodel.Cinema
+import ru.nobird.android.myapplication.viewmodel.Movie
 import java.util.Date
 import java.util.concurrent.TimeUnit
 
 interface MoviesService {
     @GET("movies")
-    fun getMovies(): Call<List<Item>>
+    fun getMovies(): Single<List<Movie>>
 
     @POST("movies")
-    fun createMovie(@Body item: Item): Call<Item>
+    fun createMovie(@Body movie: Movie): Single<Movie>
 
     @DELETE("movies/{id}")
-    fun deleteMovie(@Path("id") id: Int): Call<Void>
+    fun deleteMovie(@Path("id") id: Int): Completable
 
+    @GET("cinemas")
+    fun getCinema(@Query("id") cinema: Long): Single<List<Cinema>>
 
     @Headers(
         "User-Agent: Retrofit-Sample-App"
@@ -43,13 +49,13 @@ interface MoviesService {
         @QueryMap queryMap: Map<String, String>,
 
         @HeaderMap headersMap: Map<String, String>
-    ): Call<Item>
+    ): Call<Movie>
 
     @PUT("movies/{id}")
     fun updateMovie(
         @Path("id") id: Int,
-        @Body item: Item
-    ): Call<Item>
+        @Body movie: Movie
+    ): Call<Movie>
 }
 
 object NetworkManager {
@@ -80,18 +86,22 @@ object NetworkManager {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(converterFactory)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
 
         service = retrofit.create()
     }
 
-    fun getItems(): Call<List<Item>> =
+    fun getItems(): Single<List<Movie>> =
         service.getMovies()
 
-    fun createItem(item: Item): Call<Item> =
-        service.createMovie(item)
+    fun createItem(movie: Movie): Single<Movie> =
+        service.createMovie(movie)
 
-    fun deleteItem(item: Item): Call<Void> =
-        service.deleteMovie(item.id)
+    fun deleteItem(movie: Movie): Completable =
+        service.deleteMovie(movie.id)
+
+    fun getCinema(id: Long): Single<List<Cinema>> =
+        service.getCinema(id)
 }
