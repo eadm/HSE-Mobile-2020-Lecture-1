@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DialogsActivity" />
-        <activity android:name=".viewmodel.ViewModelActivity" />
+        <activity android:name="ru.nobird.android.myapplication.arch.view.movie.ui.activity.ViewModelActivity" />
         <activity android:name=".lifecycle.LifecycleExample" />
         <activity android:name=".FragmentsActivity" />
         <activity android:name=".fragment.arguments.ArgumentsActivity" />
