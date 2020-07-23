@@ -24,6 +24,10 @@ class ViewModelActivity : AppCompatActivity(),
      * todo: внутри которой будут разрешены зависимости MovieViewModel
      * todo: https://medium.com/koderlabs/viewmodel-with-viewmodelprovider-factory-the-creator-of-viewmodel-8fabfec1aa4f
      */
+
+    /**
+     * todo 2: сделать тоже самое через Dagger и DaggerViewModelFactory
+     */
     private val viewModel: MovieViewModel by viewModels()
 
     private val viewStateDelegate = ViewStateDelegate<State>()
