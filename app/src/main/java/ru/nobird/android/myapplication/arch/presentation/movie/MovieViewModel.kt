@@ -10,10 +10,8 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import ru.nobird.android.myapplication.arch.domain.movie.interactor.MovieDataInteractor
 import ru.nobird.android.myapplication.arch.presentation.movie.model.State
-import javax.inject.Inject
 
 class MovieViewModel
-@Inject
 constructor(
     private val movieDataInteractor: MovieDataInteractor
 ) : ViewModel() {
@@ -29,7 +27,7 @@ constructor(
     }
 
     fun onCreateMovie(name: String) {
-        // todo: Migrate to Interactor
+        // todo: Сделать через MovieDataInteractor
 //        val item = Movie(
 //            id = Random.nextInt(),
 //            name = name,
@@ -46,7 +44,7 @@ constructor(
     }
 
     fun onDeleteLastItem() {
-        // todo: Migrate to Interactor
+        // todo: Сделать через MovieDataInteractor
 //        val lastItem = (state.value as? State.Data)
 //            ?.movies
 //            ?.lastOrNull()
@@ -69,13 +67,7 @@ constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
-                onSuccess = {
-                    _state.postValue(
-                        State.Data(
-                            it
-                        )
-                    )
-                },
+                onSuccess = { _state.postValue(State.Data(it)) },
                 onError = { _state.postValue(State.Error) }
             )
     }

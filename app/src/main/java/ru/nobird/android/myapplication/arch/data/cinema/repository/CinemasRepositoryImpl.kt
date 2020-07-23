@@ -7,7 +7,6 @@ import ru.nobird.android.myapplication.arch.domain.cinema.repository.CinemasRepo
 import javax.inject.Inject
 
 class CinemasRepositoryImpl
-@Inject
 constructor(
     private val cinemaRemoteDataSource: CinemaRemoteDataSource
 ) : CinemasRepository {

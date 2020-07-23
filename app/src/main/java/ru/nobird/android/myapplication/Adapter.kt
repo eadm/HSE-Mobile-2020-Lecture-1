@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_layout.view.*
+import kotlinx.android.synthetic.main.item_movie.view.*
 
 class Adapter(
     private val onClick: (position: Int) -> Unit
@@ -16,7 +16,7 @@ class Adapter(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false))
+        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false))
 
     override fun getItemCount(): Int =
         items.size

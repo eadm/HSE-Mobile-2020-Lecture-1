@@ -11,14 +11,21 @@ import ru.nobird.android.myapplication.arch.domain.movie.model.MovieData
 import ru.nobird.android.myapplication.arch.presentation.movie.MovieViewModel
 import ru.nobird.android.myapplication.arch.view.movie.ui.dialog.CreateMovieDialogFragment
 import ru.nobird.android.myapplication.arch.presentation.movie.model.State
-import ru.nobird.android.myapplication.arch.view.movie.ui.adapter.ItemAdapterDelegate
+import ru.nobird.android.myapplication.arch.view.movie.ui.adapter.MovieAdapterDelegate
 import ru.nobird.android.ui.adapters.DefaultDelegateAdapter
 import ru.nobird.android.view.base.ui.delegate.ViewStateDelegate
 import ru.nobird.android.view.base.ui.extension.showIfNotExists
 
 class ViewModelActivity : AppCompatActivity(),
     CreateMovieDialogFragment.Callback {
+
+    /**
+     * todo: использовать ViewModelProvider.Factory для создания MovieViewModel,
+     * todo: внутри которой будут разрешены зависимости MovieViewModel
+     * todo: https://medium.com/koderlabs/viewmodel-with-viewmodelprovider-factory-the-creator-of-viewmodel-8fabfec1aa4f
+     */
     private val viewModel: MovieViewModel by viewModels()
+
     private val viewStateDelegate = ViewStateDelegate<State>()
     private val adapter = DefaultDelegateAdapter<MovieData>()
 
@@ -38,14 +45,12 @@ class ViewModelActivity : AppCompatActivity(),
 
         addItem.setOnClickListener {
             CreateMovieDialogFragment.newInstance()
-                .showIfNotExists(supportFragmentManager,
-                    CreateMovieDialogFragment.TAG
-                )
+                .showIfNotExists(supportFragmentManager, CreateMovieDialogFragment.TAG)
         }
         clear.setOnClickListener { viewModel.onDeleteLastItem() }
         errorAction.setOnClickListener { viewModel.fetchItems() }
 
-        adapter += ItemAdapterDelegate()
+        adapter += MovieAdapterDelegate()
 
         recycler.adapter = adapter
 

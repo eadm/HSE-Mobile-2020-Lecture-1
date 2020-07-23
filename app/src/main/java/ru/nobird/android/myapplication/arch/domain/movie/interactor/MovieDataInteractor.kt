@@ -9,7 +9,6 @@ import ru.nobird.android.myapplication.arch.domain.movie.repository.MoviesReposi
 import javax.inject.Inject
 
 class MovieDataInteractor
-@Inject
 constructor(
     private val cinemasRepository: CinemasRepository,
     private val moviesRepository: MoviesRepository
